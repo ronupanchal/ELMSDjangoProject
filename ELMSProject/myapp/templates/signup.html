@@ -1,0 +1,43 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+ <h2>Sign Up</h2>
+
+<div class="clearfix"></div>
+ <div class="x_content">
+<br>
+    <form  method="post" action="/addsignup/">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter username"><br>
+    <input type="text" name="upassword" placeholder="Enter password"><br>
+    <input type="text" name="usertype" placeholder="Enter type"><br>
+    <input type="date" name="userdate" ><br>
+
+    <button type="submit" class="btn btn-success">Save person</button>
+  </form>
+     <br>
+     <br>
+     <table border="1" cellpadding="2">
+    <tr>
+        <th>ID</th>
+        <th>UserName</th>
+        <th>Password</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for item in data %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.username }}</td>
+         <td>{{ item.password }}</td>
+         <td>{{ item.utype }}</td>
+         <td>{{ item.updationDate }}</td>
+         <td><a href="/edit/{{ item.id }}">Edit</a></td>
+         <td><a href="/delete/{{ item.id }}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+                  </div>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'base_admin.html' %}
+{% block content %}
+ <h2>Employee<small>Detail</small></h2>
+
+<div class="clearfix"></div>
+
+ <div class="x_content">
+     <br>
+           <form class="form-horizontal form-label-left" method="post" action="/addemp/" >
+                        {% csrf_token %}
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Employee Code <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="empcode" name="empcode"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Code (Must Be Unique)" required="required" >
+                        </div>
+                      </div>
+                     <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >First Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="efirstname" name="efirstname"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Last Name" required="required" >
+                        </div>
+                      </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Last Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="elastname" name="elastname"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Last Name" required="required" >
+                        </div>
+                      </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Birth Date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                           <input type="date" id="empdate" name="empdate"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" >
+                        </div>
+                      </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Gender <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="empgender" name="empgender" class="form-control" required>
+                                <option value="MALE">MALE</option>
+                                <option value="FEMALE">FEMALE</option>
+                                <option value="OTHER">OTHER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Department <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="deptname" name="deptname" class="form-control" required>
+                            {% for entry in items %}
+                            <option value="{{ entry.deptName }}">{{ entry.deptName }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Email Id <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="email" id="empemail" name="empemail"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Employee Email Id" required="required" >
+                        </div>
+                      </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Address:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="empaddr" name="empaddr"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Address" required="required" >
+                        </div>
+                      </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >City/Town:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="empcity" name="empcity"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter City or Town" required="required" >
+                        </div>
+                      </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Country:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="empcountry" name="empcountry"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Country" required="required" >
+                        </div>
+                      </div>
+               <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Password:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="emppassword" name="emppassword"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Password" required="required" >
+                        </div>
+                      </div>
+               <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Confirm Password:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="empcpassword" name="empcpassword"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Confirm Password" required="required" >
+                        </div>
+                      </div>
+               <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Mobile:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="empmobile" name="empmobile"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Enter Mobile Address" required="required" >
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button  class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+{% endblock %}
